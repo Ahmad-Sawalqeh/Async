@@ -1,0 +1,26 @@
+{
+  "name": "Async",
+  "version": "1.0.0",
+  "description": "# LAB - Class 03",
+  "main": "edit-file.js",
+  "scripts": {
+    "lint": "eslint **/.js",
+    "test": "jest --coverage --verbose",
+    "test-watch": "jest --watchAll --coverage --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmad-Sawalqeh/Async.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahmad-Sawalqeh/Async/issues"
+  },
+  "homepage": "https://github.com/Ahmad-Sawalqeh/Async#readme",
+  "dependencies": {
+    "eslint": "^6.8.0",
+    "jest": "^24.9.0"
+  }
+}
