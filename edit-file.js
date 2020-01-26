@@ -1,7 +1,8 @@
+// eslint-disable-next-line strict
 'use strict';
 
 const fs = require('fs');
-const util = require('util');
+// const util = require('util');
 const validator = require('./validate-schema.js');
 
 let file = `${__dirname}/data/person.json`;
@@ -12,28 +13,47 @@ process.argv[1] = file;
 //   console.log(`${index}: ${val}`);
 // });
 
+// let promiseReadFile = util.promisfy(fs.readFile);
 
-const editFileCallback = (file, callback) => {
-  fs.readFile(file, (err, data) => { // fs.readFileSync(file, (err, data) => {
+let newData, content;
+
+function editFile(file){
+
+  fs.readFile(file, 'utf8', (err, data) => {
     if (err) throw err;
-    let content = JSON.parse(data.toString());
-    console.log('Is it an Object: ', validator.isValid(content, validator.isObject));
-    content.firstName = 'Ahmad Sawalqeh';
-    content.kids = 3;
-    let newData = JSON.stringify(content);
-    fs.writeFile(file, newData, (err) => {
-      if (err) throw err;
-      console.log('\n\nDone modifying the file!\n\n');
-    });
+    newData = editFileContent(data);
+    writeNewData(file, newData);
+    readNewData(file);
   });
-};
 
-editFileCallback(file);
+}
 
-fs.readFile(file, (err, data) => {
-  if (err) throw err;
-  console.log('content of file after edited:\n\n',JSON.parse(data.toString()));
-});
+// editFile(file);
 
-module.exports = editFileCallback;
+function editFileContent(data){
+  content = JSON.parse(data);
+  // console.log('\nfile before write:\n',  content);
+  // console.log('\nIs it an Object: ', validator.isValid(content, validator.isObject),'\n');
+  content.firstName = 'Ahmad Sawalqeh';
+  content.married = true;
+  content.kids = 3;
+  return content;
+}
 
+function writeNewData(file, newData){
+  let data = JSON.stringify(newData);
+  fs.writeFile(file, data, err => {
+    if (err) throw err;
+  });
+}
+
+function readNewData(file){
+  fs.readFile(file, 'utf8', (err, data) => {
+    if (err) throw err;
+    content = JSON.parse(data);
+    // console.log('file after write:\n', content,'\n');
+  });
+}
+
+
+module.exports = editFile;

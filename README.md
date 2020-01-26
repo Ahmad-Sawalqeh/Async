@@ -8,7 +8,7 @@
 
 ### Links and Resources
 
-- [submission PR]()
+- [submission PR](https://github.com/Ahmad-Sawalqeh/Async/pull/1)
 - [ci/cd]() (GitHub Actions)
 
 ### Setup
@@ -21,3 +21,7 @@ run `npm test` to check all test.
 
 - How do you run tests?<br>
   run `npm test`
+
+# UML
+
+![](assert/class-03.jpeg)

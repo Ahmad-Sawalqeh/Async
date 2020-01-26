@@ -1,30 +1,34 @@
+// eslint-disable-next-line strict
 'use strict';
 
-// jest.mock('fs');
+const fs = require('fs');
+let path = require('path');
 
 const editFile = require('../edit-file.js');
 
-describe('File edit-file Module', () => {
+let pathFile1 = path.join(__dirname, '../data/test-file1.json');
+let pathFile2 = path.join(__dirname, '../data/test-file.json');
 
-  describe('as a callback', () => {
 
-    it('when given a bad file, returns an error', (done) => {
-      let file = `${__dirname}/../data/bad.txt`;
-      editFile.editFileCallback(file, (err, data) => {
-        expect(err).toBeDefined();
-        done();
-      });
+describe('tests our Module', () => {
+
+  it('Test File 1', () => {
+    editFile(pathFile1);
+    fs.readFile(pathFile1, 'utf8', (err, data) => {
+      if (err) throw err;
+      let content = JSON.parse(data);
+      expect(content.married).toBeTruthy();
     });
+  });
 
-    it('when given a real file, returns the contents', (done) => {
-      let file = `${__dirname}/../data/file1.txt`;
-      editFile.editFileCallback(file, (err, data) => {
-        expect(err).toBeUndefined();
-        expect(typeof data).toBe('object');
-        done();
-      });
+  it('Test File 2', () => {
+    editFile(pathFile2);
+    fs.readFile(pathFile1, 'utf8', (err, data) => {
+      if (err) throw err;
+      let content = JSON.parse(data);
+      expect(content.married).toBeTruthy();
     });
-
   });
 
 });
+

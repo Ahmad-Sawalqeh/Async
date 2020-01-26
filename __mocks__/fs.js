@@ -1,3 +1,4 @@
+// eslint-disable-next-line strict
 'use strict';
 
 module.exports = exports = {};
@@ -8,7 +9,7 @@ exports.readFile = (file, cb) => {
     cb('Invalid File');
   }
   else {
-    cb(undefined, Buffer.from('File Contents'));
+    cb(null, Buffer.from('File Contents'));
   }
 
 };
