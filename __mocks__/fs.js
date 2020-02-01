@@ -5,7 +5,7 @@ module.exports = exports = {};
 
 exports.readFile = (file, cb) => {
 
-  if( file.match(/bad/i) ) {
+  if( file !== '../data/bad-path.json'){
     cb('Invalid File');
   }
   else {

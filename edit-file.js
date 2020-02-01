@@ -51,7 +51,7 @@ function readNewData(file){
   fs.readFile(file, 'utf8', (err, data) => {
     if (err) throw err;
     content = JSON.parse(data);
-    // console.log('file after write:\n', content,'\n');
+    console.log('file after write:\n', content,'\n');
   });
 }
 
