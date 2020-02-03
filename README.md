@@ -21,3 +21,7 @@ run `npm test` to check all test.
 
 - How do you run tests?<br>
   run `npm test`
+
+# UML
+
+![](assert/class-03.jpeg)
