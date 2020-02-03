@@ -31,6 +31,5 @@ describe('tests our Module', () => {
     });
   });
 
-
 });
 
